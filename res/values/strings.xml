@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">NotiReader</string>
+    <string name="main_action_clear">Clear</string>
+    <string name="main_action_service">Notification Service Settings</string>
+    <string name="main_empty">No messages found!</string>
+
+</resources>
