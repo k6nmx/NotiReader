@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity implements MessageListener,
 		list.setEmptyView(this.findViewById(android.R.id.empty));
 		list.setOnItemClickListener(this);
 
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
 			NotificationsService.ENABLED = true;
 		} else {
 			NotificationsAccessService.ENABLED = true;
@@ -107,7 +107,7 @@ public class MainActivity extends ActionBarActivity implements MessageListener,
 	public void btnService_Click(MenuItem item) {
 		String action = "android.settings.";
 
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
 			action += "ACTION_NOTIFICATION_LISTENER_SETTINGS";
 		} else {
 			action += "ACCESSIBILITY_SETTINGS";
