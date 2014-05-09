@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import android.app.Notification;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
@@ -16,7 +17,18 @@ public class DefaultView implements MessageParser {
 	private static final String TAG = DefaultView.class.getName();
 
 	private static final int ID_TITLE = 16908310; 	// com.android.internal.R.id.title
-	private static final int ID_TEXT = 16908358; 	// com.android.internal.R.id.text
+	private static final int ID_TEXT; 	
+	
+	static {
+		// com.android.internal.R.id.text
+		
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+			ID_TEXT = 16908352;
+		else
+			ID_TEXT = 16908358; // on 4.0 / 14 and above 
+
+		// TODO: Extend further API version resource IDs
+	}
 
 	@Override
 	public Message parse(Notification notification) {

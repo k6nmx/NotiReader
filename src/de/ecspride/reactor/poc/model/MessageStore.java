@@ -27,6 +27,8 @@ public class MessageStore {
 
 	// --------
 
+	private static final int MAX_COUNT = 20;
+
 	private SharedPreferences preferences = null;
 	private List<Message> messages = null;
 	private MessageListener listener = null;
@@ -52,6 +54,9 @@ public class MessageStore {
 
 	public void addMessage(Message message) {
 		this.messages.add(0, message);
+
+		if (this.messages.size() > MAX_COUNT)
+			this.messages.remove(this.messages.size() - 1);
 
 		if (this.listener != null)
 			this.listener.onMessage(message);
